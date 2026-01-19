@@ -1,45 +1,59 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { ScrollView, View, Text, TextInput, StyleSheet } from 'react-native';
+export default function RegisterScreen() {
+ return (
+ <ScrollView
+ style={styles.container}
+ contentContainerStyle={styles.contentContainer}
+ >
+ <Text style={styles.title}>đăng ký tài khoản</Text>
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+ <Text style={styles.label}>Họ tên</Text>
+ <TextInput style={styles.input} placeholder="Nguyễn Văn A" />
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+ <Text style={styles.label}>Email</Text>
+ <TextInput style={styles.input} placeholder="email@example.com" />
 
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
+ <Text style={styles.label}>Số điện thoại</Text>
+ <TextInput style={styles.input} placeholder="0912345678" />
+
+ <Text style={styles.label}>địa chỉ</Text>
+ <TextInput
+ style={[styles.input, styles.textArea]}
+ multiline
+ numberOfLines={3}
+ />
+
+ {/* Thêm nhiều fields khác... */}
+ </ScrollView>
+ );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+ container: {
+ flex: 1,
+ backgroundColor: '#fff',
+ },
+ contentContainer: {
+ padding: 20,
+ },
+ title: {
+ fontSize: 24,
+ fontWeight: 'bold',
+ marginBottom: 20,
+ },
+ label: {
+ fontSize: 16,
+ marginTop: 15,
+ marginBottom: 5,
+ },
+ input: {
+ borderWidth: 1,
+ borderColor: '#ddd',
+ padding: 12,
+ borderRadius: 8,
+ },
+ textArea: {
+ height: 80,
+ textAlignVertical: 'top',
+ },
 });
-
-export default App;
